@@ -1,3 +1,4 @@
+import Checkout from "../(Checkout)/Checkout";
 import ShoppingCard from "../ShoppingCard/ShoppingCard";
 import ProductSearchBar from "./ProductSearchBar";
 import { useState, useEffect } from "react";
@@ -44,6 +45,7 @@ const ProductListPresenter = ({
       </div>
 
       <div>
+        <Checkout/>
         <ShoppingCard
           onAddCard={onAddCard}
           user={user}
