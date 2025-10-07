@@ -1,9 +1,13 @@
 import Image from "next/image";
 import ContactControlled from "./ components/ContactControlled";
+import ContactUnConWithRef from "./ components/ContactUnConWithRef";
 
 export default function Home() {
   return (
-
-    <ContactControlled/>
+<div>
+      
+      <ContactControlled />
+      <ContactUnConWithRef/>
+</div>
   );
 }

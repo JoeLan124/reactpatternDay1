@@ -26,7 +26,7 @@ const ContactControlled = () => {
       <div className="">
         <div className="flex flex-col w-96 space-y-3">
           <label className="w-24">Name: </label>
-          <div></div>
+     
           <input
             type="text"
             name="name"
