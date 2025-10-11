@@ -1,13 +1,13 @@
 import Card from "./Card"
 
-const CardDemo = () => {
+export default function CardDemo ()  {
   return (
     <Card>
-    <Card.Header title="Hallo"> sdnalkd</Card.Header>
-    <Card.Body><p>Body</p></Card.Body>
-    <Card.Footer>askljdaksjd</Card.Footer>
+      <Card.Header title="Hallo" className="bg-blue-50"> kalsjdl</Card.Header>
+      <Card.Body>Body</Card.Body>
+     
+      <Card.Footer>ksjdflsklkjl</Card.Footer>
   </Card>
       
   )
 }
-export default CardDemo
