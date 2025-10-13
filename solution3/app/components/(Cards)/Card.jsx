@@ -1,24 +1,23 @@
 "use client"
 import { useState } from "react";
 
-const Card = ({ children }) => {
+let Card = ({ children, close }) => {
+  
   return (
-    <div className="bg-white text-black rounded-2xl p-6">
+   <div className="bg-white text-black rounded-2xl p-6">
       {children}
-    </div>
-  );
+    </div >
+  )
 }
 
+const CardHeader = ({ title, children, className}) => {
 
-const CardHeader = ({ title, children, className }) => {
 
-  const [close, setClose] = useState(false)
 
     return (
       <div className={`mb-4 border-1 border-gray-100 rounded-3xl p-4 shadow-2xl ${className}`} >
         <div className="flex justify-between">
           <h1 className="text-xl font-bold">{title}</h1>
-          <p onClick={() => setClose(true)}>x</p>
         </div>
           <div className="text-sm">
                 {children}
@@ -44,12 +43,15 @@ const CardFooter =  ({children }) => {
 };
 
 
-
 Card.Header = CardHeader;
 Card.Body = CardBody;
 Card.Footer = CardFooter;
 
 // Attach subcomponents
-
-
 export default Card
+
+export { CardHeader, CardBody, CardFooter }
+
+console.log('Card.Header:', Card.Header);
+console.log('Card.Body:', Card.Body);
+console.log('Card.Footer:', Card.Footer);
