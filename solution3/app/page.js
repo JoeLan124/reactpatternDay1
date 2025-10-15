@@ -1,4 +1,4 @@
-import CardDemo from "./components/CardDemo";
+import CardDemo from "./components/(Cards)/CardDemo";
 
 export default function Home() {
   return <CardDemo/>;
