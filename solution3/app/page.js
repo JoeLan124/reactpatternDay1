@@ -1,5 +1,5 @@
-import CardDemo from "./components/(Cards)/CardDemo";
+import MessyImageCardDemo from "./components/(MessyImageCards)/MesseImageCardDemo"
 
 export default function Home() {
-  return <CardDemo/>;
+  return <MessyImageCardDemo/>
 }
