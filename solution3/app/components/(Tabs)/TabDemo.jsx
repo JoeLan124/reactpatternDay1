@@ -1,6 +1,8 @@
+import Tab from "./Tab"
+
 const TabDemo = () => {
   return (
-    <div>TabDemo</div>
+<Tab/>
   )
 }
 export default TabDemo
