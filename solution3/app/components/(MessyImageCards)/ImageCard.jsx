@@ -4,8 +4,10 @@ const ImageCard = ({
   description,
   height,
   width,
-  imageUrl
+  imageUrl,
+className
+
 }) => {
-    return <div><Image alt={description} height={height} width={width} priority src={imageUrl || ""} as="image"/></div>;
+  return <div><Image alt={description} height={height} width={width} className={`${className}`}  priority src={imageUrl || ""} as="image"/></div>;
 };
 export default ImageCard;
