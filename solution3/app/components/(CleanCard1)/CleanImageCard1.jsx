@@ -5,7 +5,7 @@ const CleanImageCard1 = ({children}) => {
   return <div>{children }</div>
 }
 
-const CleanImageCardTitle = ({title, description, children, className}) => {
+const CleanImageCard1Title = ({title, description, children, className}) => {
   return (
     <div className={className}>
       <h1>{title}</h1>
@@ -15,7 +15,7 @@ const CleanImageCardTitle = ({title, description, children, className}) => {
   )
 }
 
-const CleanImageCardBody = ({ title, description, children }) => {
+const CleanImageCard1Body = ({ title, description, children }) => {
   return (
     <div>
       <div>{children}</div>
@@ -23,7 +23,7 @@ const CleanImageCardBody = ({ title, description, children }) => {
   );
 };
 
-const CleanImageCardFooter = ({ title, description , children}) => {
+const CleanImageCard1Footer = ({ title, description , children}) => {
   return (
     <div>
       <div>{children}</div>
@@ -31,9 +31,9 @@ const CleanImageCardFooter = ({ title, description , children}) => {
   );
 };
 
-CleanImageCard1.Title = CleanImageCardTitle;
-CleanImageCard1.Body = CleanImageCardBody;
-CleanImageCard1.Footer = CleanImageCardFooter;
+CleanImageCard1.Title = CleanImageCard1Title;
+CleanImageCard1.Body = CleanImageCard1Body;
+CleanImageCard1.Footer = CleanImageCard1Footer;
 
 
 export default CleanImageCard1
