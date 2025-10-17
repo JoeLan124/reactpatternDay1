@@ -1,8 +1,8 @@
-import CleanImageCard2Demo from "../(CleanCard2)/CleanImageCard2Demo";
+
 
 
 const CleanImageCard1 = ({children}) => {
-  return <div>{children }</div>
+  return <div className="flex justify-center items-center bg-white shadow-2xl text-black w-96 m-4 rounded-2xl shadow-amber-500">{children }</div>
 }
 
 const CleanImageCard1Title = ({title, description, children, className}) => {
@@ -15,15 +15,15 @@ const CleanImageCard1Title = ({title, description, children, className}) => {
   )
 }
 
-const CleanImageCard1Body = ({ title, description, children }) => {
+const CleanImageCard1Body = ({ children }) => {
   return (
-    <div>
+    <div className="flex justify-center items-center m-4 bg-amber-200 rounded-2xl size-36">
       <div>{children}</div>
     </div>
   );
 };
 
-const CleanImageCard1Footer = ({ title, description , children}) => {
+const CleanImageCard1Footer = ({ children}) => {
   return (
     <div>
       <div>{children}</div>
