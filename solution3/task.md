@@ -5,6 +5,6 @@
 - Make a <Card.Image>. Try using it in a few different ways to see how clean the code looks compared to a giant Card with 10 props.” OK
 
 - Card clean 1 - OK
-- card clean 2 - open
+- card clean 2 - OK
 
 - Create a Tab component using this pattern. - open
