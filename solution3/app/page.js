@@ -4,5 +4,5 @@ import CleanCardDemo2 from "./components/(CleanCard2)/CleanImageCard2Demo"
 import TabDemo from "./components/(Tabs)/TabDemo";
 
 export default function Home() {
-  return <CleanCardDemo2/>
+  return <TabDemo/>
 }
