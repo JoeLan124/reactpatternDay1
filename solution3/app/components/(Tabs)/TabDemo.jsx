@@ -1,11 +1,18 @@
-import Tab from "./Tab"
+import Tab, { TabHeader, TabContent } from "./Tab"
 
 const TabDemo = () => {
-  return (
-    <Tab>
-      <Tab.Header header={["name", "deut", "eng" ]} />
 
-</Tab>
-  )
+  const tabData = {
+    "name": "nameText1",
+    "address": "addresstext",
+    "phone": "phonetext"
+  }
+
+
+
+  return (
+    <Tab tabData={ tabData}/>
+
+  );
 }
 export default TabDemo

@@ -2,37 +2,56 @@
 
 import { useState } from "react"
 
-const Tab = ({ children }) => {
+const Tab = ({ children, tabData }) => {
+  const header = Object.keys(tabData);
+  const content = Object.values(tabData);
+
+  const [isActiveTab, setActiveTab] = useState(0);
+    const handleClick = (index) => {
+      setActiveTab(index);
+    };
   return (
-    <div>{ children}</div>
+    <div className="m-2">
+      <TabBody onTabClick={handleClick} header={header} isActiveTab={isActiveTab} content={content} />
+
+      {children}
+    </div>
   )
 }
 
-export default Tab
 
-
-const TabHeader = ({ header }) => {
-  const [isActiveTab, setActiveTab] = useState(0)
-
-  const handleClick = (index) => {
-    setActiveTab(index)
-}
-
+const TabBody = ({ header, onTabClick, isActiveTab, content, children }) => {
+  const contentText = content[isActiveTab]
   return (
-    <div className="flex justify-center items-center">
-      {header.map((head, index) => {
-        return (
-          <ul className={`m-2 text-white p-2 border-x-1 ${isActiveTab===index?bg-gray-300:""}`} onClick={() =>handleClick(index)} key={index}>{head}</ul>)
-      })}
-  
-  </div>)
+    <div className="flex flex-col ">
+      <div className="flex">
+        {header.map((head, index) => {
+          return (
+            <ul
+              className={`mt-2 p-3 rounded-t-xl text-gray-500 ${
+                isActiveTab === index
+                  ? " bg-gray-600 text-white"
+                  : ""
+              }`}
+              onClick={() => onTabClick(index)}
+              key={index}>
+              {head}
+            </ul>
+          );
+        })}
+      </div>
+      <div className="flex justify-center  h-48 bg-gray-600 rounded-r-xl rounded-b-xl mx-auto w-full">
+        <div className="flex justify-center items-center">
+          <p>{contentText}</p>
+          {children}
+        </div>
+      </div>
+    </div>
+  );
 }
 
-const TabContent = ({content}) => {
-  return (
-    <div>{ content}</div>
-  )
-}
 
-Tab.Content = TabContent
-Tab.Header = TabHeader
+
+
+
+export default Tab;
