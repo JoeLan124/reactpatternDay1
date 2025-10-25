@@ -40,7 +40,7 @@ const TabBody = ({ header, onTabClick, isActiveTab, content, children }) => {
           );
         })}
       </div>
-      <div className="flex justify-center  h-48 bg-gray-600 rounded-r-xl rounded-b-xl mx-auto w-full">
+      <div className="flex justify-center  h-48 bg-gray-600 rounded-r-sm rounded-b-sm mx-auto w-full shadow-lg shadow-amber-300">
         <div className="flex justify-center items-center">
           <p>{contentText}</p>
           {children}

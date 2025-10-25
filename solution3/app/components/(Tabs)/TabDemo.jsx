@@ -5,13 +5,14 @@ const TabDemo = () => {
   const tabData = {
     "name": "nameText1",
     "address": "addresstext",
-    "phone": "phonetext"
+    "phone": "phonetext",
+    "age": 9,
   }
 
 
 
   return (
-    <Tab tabData={ tabData}/>
+    <Tab tabData={tabData}/>
 
   );
 }
