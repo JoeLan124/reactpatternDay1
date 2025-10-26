@@ -23,6 +23,8 @@ function AccordionItem({ title, children }) {
 }
 
 // Attach subcomponents
-Accordion.Item = AccordionItem;
+// Accordion.Item = AccordionItem;
+
+export { AccordionItem }
 
 export default Accordion;
