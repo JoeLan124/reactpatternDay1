@@ -2,8 +2,8 @@ import Accordion, { AccordionItem } from "./Accordion";
 
 export default function AccordionDemo() {
   return (
-    <Accordion>
-      <AccordionItem title="What is Compound Component Pattern?">
+    <Accordion className="flex flex-col bg-white text-black gap-2">
+      <AccordionItem title="What is Compound Component Pattern?" className="">
         It’s a React pattern that allows parent and child
         components to work together seamlessly while giving
         developers flexible composition.
