@@ -1,11 +1,12 @@
 "use client"
 
-const Toggler = ({ onClick, children, visible }) => {
+const Toggler = ({ onClick, children, visible, className }) => {
 
-    return (
-      <div onClick={onClick} className="cursor-pointer">
+  return (
+    <div onClick={onClick} className={className }
+>
         {visible && (
-          <div className="bg-amber-600 w-1/3 h-48">
+          <div className="bg-white text-black w-1/3 h-48 p-2 rounded-2xl">
             {children}
           </div>
         )}
