@@ -7,7 +7,7 @@ const TogglerDemo = () => {
 
     const [visible, setVisible] = useState(true)
   return (
-      <Toggler onClick={setVisible(!visible)}>
+      <Toggler onClick={() => setVisible(!visible)} visible={visible}>
           <p>hallo</p>
       </Toggler>
   )
