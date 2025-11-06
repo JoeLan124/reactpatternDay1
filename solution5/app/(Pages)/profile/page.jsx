@@ -1,8 +1,9 @@
-import ProfileView from "../../components/ProfileView"
+"use client"
+import UserWithHOC from "../../components/UserWithHOC"
 
 const page = () => {
   return (
-  <ProfileView/>
+    <UserWithHOC/>
   )
 }
-export default page
+export default page;
