@@ -1,12 +1,11 @@
-import AdminPanel from "./components/AdminPanel"
-import WithDatafetching from "./HOC/withDatafetching";
+import UserWithHOC from "./components/UserWithHOC"
 
 
 export default function Home() {
   return (
     <div>
       {/* <AdminPanel /> */}
-      <WithDatafetching/>
+      <UserWithHOC/>
     </div>
   );
 }
