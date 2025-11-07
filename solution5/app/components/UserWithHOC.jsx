@@ -17,8 +17,8 @@ export default function UserWithHOC() {
         Each component below is wrapped with the withDataFetching HOC and fetches its own user data
       </p>
       <div className="space-y-6">
-        <ReportsWithData />
         <ProfileViewWithData />
+        <ReportsWithData />
         <AdminPanelWithData />
       </div>
     </div>
