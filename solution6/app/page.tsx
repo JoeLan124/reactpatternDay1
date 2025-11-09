@@ -42,6 +42,7 @@ export default function Home ()  {
           <textarea className="bg-green-200 text-black rounded-2xl p-2"></textarea>
         </div>
       </div>
+      <hr className=""/>
       <div>
         <p>Second custom hook: </p>
         <UserSettings/>

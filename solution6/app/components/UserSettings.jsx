@@ -12,22 +12,25 @@ function UserSettings() {
     };
 
     return (
-        <div >
-            <h3>Willkommen zurück, {name}! 👋</h3>
-            <p>Dein Name wird im Browser gespeichert.</p>
+      <div>
+        <h3 className="mb-6">
+          Your saved user name:{" "}
+          <p className="bg-red-500 p-4 w-[200px] rounded-2xl text-blue-800">
+            {name}
+          </p>
+        </h3>
 
-            <input
-                type="text"
-                placeholder="Gib deinen Namen ein..."
-                value={name} // Das Eingabefeld spiegelt den aktuellen Wert wider
-                onChange={handleNameChange}
-             
-            />
-            
-            <p >
-                Probiere es aus: Ändere den Namen und lade die Seite neu.
-            </p>
-        </div>
+        <p>
+          Enter here a user name, which will be saved!
+        </p>
+        <input
+          type="text"
+          placeholder="Please enter your user name..."
+          value={name} // Das Eingabefeld spiegelt den aktuellen Wert wider
+          onChange={handleNameChange}
+          className="bg-blue-200 p-4 rounded-2xl text-black"
+        />
+      </div>
     );
 }
 
