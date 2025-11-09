@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
 import useClipboard from "@/app/hooks/useClipBoard";
+import UserSettings from "@/app/components/UserSettings"
 
 export default function Home ()  {
   const [inputValue, setInputValue] = useState("");
@@ -10,33 +11,40 @@ export default function Home ()  {
   
   return (
     <div className="m-4">
-
-      {/* 1 Text input for copying */}
       <div>
-        <p>Input: </p>
-        <textarea
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          className="bg-gray-200 rounded-2xl p-2 text-black"></textarea>
+        <p>First custom hook: clipboard</p>
+        {/* 1 Text input for copying */}
+        <div>
+          <p>Input: </p>
+          <textarea
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            className="bg-gray-200 rounded-2xl p-2 text-black"></textarea>
+        </div>
+
+        {/* 2 Copy functionality */}
+        <button onClick={copy}>
+          {isCopied ? "✅ text copied" : "📋 copy text"}
+        </button>
+
+        {error && (
+          <p style={{ color: "red" }}>
+            Fehler beim Kopieren: {error.message}
+          </p>
+        )}
+        <div className="my-4" />
+
+        {/* 3 fill in copied clipboard text here*/}
+        <div>
+          <p>
+            Output (please add copied clipboard text here):{" "}
+          </p>
+          <textarea className="bg-green-200 text-black rounded-2xl p-2"></textarea>
+        </div>
       </div>
-
-  
-{/* 2 Copy functionality */}
-      <button onClick={copy}>
-        {isCopied ? "✅ text copied" : "📋 copy text"}
-      </button>
-
-      {error && (
-        <p style={{ color: "red" }}>
-          Fehler beim Kopieren: {error.message}
-        </p>
-      )}
-      <div className="my-4" />
-
-      {/* 3 fill in copied clipboard text here*/}
       <div>
-        <p>Output (please add copied clipboard text here): </p>
-        <textarea className="bg-green-200 text-black rounded-2xl p-2"></textarea>
+        <p>Second custom hook: </p>
+        <UserSettings/>
       </div>
     </div>
   );
