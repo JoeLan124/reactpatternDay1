@@ -4,7 +4,7 @@ import useLocalStorage from '../hooks/useLocalStorage'; // Import des Custom Hoo
 
 function UserSettings() {
 
-    const [name, setName] = useLocalStorage('username', 'Gast');
+    const [name, setName] = useLocalStorage('username', 'JohnDoe');
     
     const handleNameChange = (event) => {
         // Die setName-Funktion des Hooks aktualisiert den State UND den localStorage
@@ -14,7 +14,7 @@ function UserSettings() {
     return (
       <div>
         <h3 className="mb-6">
-          Your saved user name:{" "}
+          Your saved user name (please refresh browser to test it):
           <p className="bg-red-500 p-4 w-[200px] rounded-2xl text-blue-800">
             {name}
           </p>
@@ -26,7 +26,7 @@ function UserSettings() {
         <input
           type="text"
           placeholder="Please enter your user name..."
-          value={name} // Das Eingabefeld spiegelt den aktuellen Wert wider
+          value={name} 
           onChange={handleNameChange}
           className="bg-blue-200 p-4 rounded-2xl text-black"
         />
