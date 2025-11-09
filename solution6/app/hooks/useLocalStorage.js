@@ -1,27 +1,27 @@
-"use Client"
+"use client"
 import { useState, useEffect } from "react";
 
 function useLocalStorage(key, initialValue) {
-  // 1. Sicheres Lesen (Try-Catch)
-  const readValue = () => {
+  // State initialized with initialValue to ensure server/client hydration match
+  const [storedValue, setStoredValue] = useState(initialValue);
+
+  // Read from localStorage after mount (client-side only)
+  useEffect(() => {
     if (typeof window === "undefined") {
-      return initialValue;
+      return;
     }
 
     try {
       const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
+      const value = item ? JSON.parse(item) : initialValue;
+      setStoredValue(value);
     } catch (error) {
       console.warn(
-        `Error reading localStorage key “${key}”:`,
+        `Error reading localStorage key "${key}":`,
         error
       );
-      return initialValue;
     }
-  };
-
-  // State, der den gespeicherten oder initialen Wert hält
-  const [storedValue, setStoredValue] = useState(readValue);
+  }, [key, initialValue]);
 
   // 2. Sicheres Schreiben (Try-Catch)
   const writeValue = (newValue) => {
@@ -39,18 +39,11 @@ function useLocalStorage(key, initialValue) {
     } catch (error) {
       // Fängt Fehler beim Speichern oder State-Update ab
       console.error(
-        `Error updating localStorage or state for key “${key}”:`,
+        `Error updating localStorage or state for key "${key}":`,
         error
       );
     }
   };
-
-  // Stellt sicher, dass der State auf dem Client neu synchronisiert wird,
-  // falls ein externer Speicher-Event den Wert geändert hat.
-  useEffect(() => {
-    setStoredValue(readValue());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key]);
 
   return [storedValue, writeValue];
 }
