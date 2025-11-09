@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback } from "react";
+import { useState } from "react";
 
 
 function useClipboard(textToCopy) {
@@ -16,7 +16,7 @@ function useClipboard(textToCopy) {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
     } catch (err) {
-      console.error("Kopieren fehlgeschlagen:", err);
+      console.error("copying went wrong:", err);
       setError(err);
       setIsCopied(false);
     }
