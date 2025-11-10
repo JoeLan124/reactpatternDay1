@@ -1,13 +1,12 @@
 "use client"
 
-import useLocalStorage from '../hooks/useLocalStorage'; // Import des Custom Hooks
+import useLocalStorage from '../hooks/useLocalStorage'; 
 
 function UserSettings() {
 
     const [name, setName] = useLocalStorage('username', 'JohnDoe');
     
     const handleNameChange = (event) => {
-        // Die setName-Funktion des Hooks aktualisiert den State UND den localStorage
         setName(event.target.value); 
     };
 
