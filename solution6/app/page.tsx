@@ -2,6 +2,7 @@
 import { useState } from "react";
 import useClipboard from "@/app/hooks/useClipBoard";
 import UserSettings from "@/app/components/UserSettings"
+import DropDownComponent from "@/app/components/DropDownComponent"
 
 export default function Home ()  {
   const [inputValue, setInputValue] = useState("");
@@ -42,10 +43,14 @@ export default function Home ()  {
           <textarea className="bg-green-200 text-black rounded-2xl p-2"></textarea>
         </div>
       </div>
-      <hr className=""/>
+      <hr className="" />
       <div>
-        <p>Second custom hook: </p>
-        <UserSettings/>
+        <p>Second custom hook: local storage </p>
+        <UserSettings />
+      </div>
+      <div>
+        <p>Third custom hook: click outside</p>
+        <DropDownComponent />
       </div>
     </div>
   );
