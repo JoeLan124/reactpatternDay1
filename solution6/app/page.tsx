@@ -48,6 +48,7 @@ export default function Home ()  {
         <p>Second custom hook: local storage </p>
         <UserSettings />
       </div>
+      <hr className="mt-2" />
       <div>
         <p>Third custom hook: click outside</p>
         <DropDownComponent />
