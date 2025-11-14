@@ -5,15 +5,28 @@ import { AuthContext } from "../context"
 
 
 const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setAuthentification] = useState(false);
+  const [isAuthenticated, setAuthentification] = useState(false);
+   const [isEnglish, setEnglish] =
+     useState(true);
     
 
     const login = () => {
         setAuthentification((prev) => !prev)
     }
+  
+  const setLanguage = () => {
+    setEnglish((prev) => !prev)
+  }
+  
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login }}>
+    <AuthContext.Provider
+      value={{
+        isAuthenticated,
+        login,
+        isEnglish,
+        setLanguage,
+      }}>
       {children}
     </AuthContext.Provider>
   );

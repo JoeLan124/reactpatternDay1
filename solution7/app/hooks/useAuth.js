@@ -3,9 +3,14 @@ import { use } from "react";
 
 
 const useAuth = () => {
-  const { isAuthenticated, login } = use(AuthContext);
+  const { isAuthenticated, login, isEnglish, setLanguage } = use(AuthContext);
 
-  return { isAuthenticated, login };
+  return {
+    isAuthenticated,
+    login,
+    isEnglish,
+    setLanguage,
+  };
 
 }
 
