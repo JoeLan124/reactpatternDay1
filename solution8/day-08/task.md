@@ -4,7 +4,9 @@
 
 ## Build an optimistic comment feature for a mini blog
 
-1. A Post view with existing comments pulled from GET /api/posts/:id/comments. (Use fake-server)
+1. A Post vi
+
+
 
 2. A comment form. When user submits:
 

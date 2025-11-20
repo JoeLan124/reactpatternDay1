@@ -1,4 +1,5 @@
 // src/types/post.ts oder direkt in der Datei, wo es benötigt wird
+import Input from "@/app/components/Input"
 
 export type Post = {
   id: string;
@@ -31,6 +32,7 @@ export default async function PostsPage() {
   return (
     <main>
       <h1>Meine Blog Posts</h1>
+      <Input/>
       {posts.map((post) => (
         <article key={post.id}>
           <h2>{post.title}</h2>
