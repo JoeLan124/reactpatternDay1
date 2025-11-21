@@ -1,23 +1,34 @@
 "use client"
-import { useState } from "react"
+import { useState, FormEvent } from "react"
+
 
 const Input = () => {
-    const [newComment, setNewCommet] = useState("")
+  const [newComment, setNewComment] = useState("")
+  
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("first")
+  }
   return (
-    <div className="flex  h-12 text-black gap-2 m-4">
-      <label className="text-white">Name</label>
+    <form  onSubmit={handleSubmit}>
+    <div className="flex justify-between items-center h-24 text-black gap-2 m-4 bg-amber-800 p-2">
+      <div className="flex  items-center w-full">
+
+      <label className="text-white pr-4">Comment</label>
 
       <input
-        className="bg-amber-400 rounded-3xl p-3"
+        className="bg-blue-100 rounded-3xl p-3 w-full"
         name="comment"
         value={newComment}
-        onChange={(e) => setNewCommet(e.target.value)}
-      />
-      <div className="text-white">
+        onChange={(e) => setNewComment(e.target.value)}
+          />
+  
 
-      {newComment}
       </div>
-    </div>
+      <button type="submit">Submit</button>
+      </div>
+      </form>
   );
 }
 export default Input

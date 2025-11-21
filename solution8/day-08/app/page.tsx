@@ -7,18 +7,15 @@ export type Post = {
   content: string;
 };
 
-async function getPosts<Post>() {
+async function getPosts<POST>() {
   const res = await fetch(
     "http://localhost:3001/posts/",
     {
-      // Standardmäßig cached Next.js 'fetch' Ergebnisse.
-      // Mit 'no-store' erzwingst du, dass es bei jeder Anfrage neu geholt wird.
       cache: "no-store",
     }
   );
 
   if (!res.ok) {
-    // Dies löst einen Fehler aus, der von der nearest error.js behandelt wird
     throw new Error("Failed to fetch posts");
   }
 
@@ -26,8 +23,7 @@ async function getPosts<Post>() {
 }
 
 export default async function PostsPage() {
-  // Await des Promises direkt im Rendering-Prozess der Komponente.
-  const posts = await getPosts<Post>();
+  const posts:Post[] = await getPosts<Post[]>();
 
   return (
     <main>
