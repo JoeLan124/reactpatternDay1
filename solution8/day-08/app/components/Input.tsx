@@ -12,7 +12,7 @@ const Input = () => {
   }
   return (
     <form  onSubmit={handleSubmit}>
-    <div className="flex justify-between items-center h-24 text-black gap-2 m-4 bg-amber-800 p-2">
+    <div className="flex justify-between items-center h-24 text-black gap-2 p-2">
       <div className="flex  items-center w-full">
 
       <label className="text-white pr-4">Comment</label>
@@ -26,7 +26,7 @@ const Input = () => {
   
 
       </div>
-      <button type="submit">Submit</button>
+      <button className="bg-blue-200 p-2 rounded-2xl mx-4"type="submit">Submit</button>
       </div>
       </form>
   );
