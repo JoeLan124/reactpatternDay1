@@ -34,14 +34,25 @@ async function getPosts<POST>() {
 }
 
 async function addComment(content: string): Promise<Post> {
-  const res = await fetch("/api/posts", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ title: "New Comment", content })
-  });
-  
-  if (!res.ok) throw new Error("Failed to add comment");
-  return res.json();
+  // Simulate 50% success rate for testing
+  if (Math.random() < 0.5) {
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
+    
+    const res = await fetch("/api/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: "New Comment", content })
+    });
+    
+    if (!res.ok) throw new Error("Failed to add comment");
+    return res.json();
+  } else {
+    // Simulate 50% failure
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 500 + Math.random() * 1000));
+    throw new Error("Random server error - please try again!");
+  }
 }
 
 function ToastNotification({ toast, onDismiss }: { toast: Toast; onDismiss: (id: string) => void }) {
