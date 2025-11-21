@@ -1,3 +1,5 @@
+"use client"
+
 // src/types/post.ts oder direkt in der Datei, wo es benötigt wird
 import Input from "@/app/components/Input"
 import { useState, useOptimistic, startTransition, useEffect } from "react"
@@ -70,12 +72,24 @@ export default function PostsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [toasts, setToasts] = useState<Toast[]>([]);
 
-  // Load posts on mount
+  // Load posts on mount, preserving optimistic posts
   useEffect(() => {
-    getPosts<Post[]>()
-      .then(setPosts)
-      .catch(console.error)
-      .finally(() => setIsLoading(false));
+    const loadPosts = async () => {
+      try {
+        const serverPosts = await getPosts<Post[]>();
+        setPosts(prev => {
+          // Merge server posts with any existing optimistic posts
+          const optimisticPosts = prev.filter(p => p.isOptimistic);
+          return [...serverPosts, ...optimisticPosts];
+        });
+      } catch (error) {
+        console.error("Failed to fetch posts");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadPosts();
   }, []);
 
   function addToast(message: string, type: 'error' | 'success') {
@@ -87,45 +101,42 @@ export default function PostsPage() {
     setToasts(prev => prev.filter(toast => toast.id !== id));
   }
 
-  // Optimistic state management
+  // Optimistic state management - optimisticPosts will include both base posts and optimistic ones
   const [optimisticPosts, addOptimisticPost] = useOptimistic(posts, (state, newPost: Post) => [
-    ...state, { ...newPost, isOptimistic: true, tempId: `temp-${Date.now()}` }
+    ...state,
+    { ...newPost, isOptimistic: true, tempId: `temp-${Date.now()}` }
   ]);
 
   async function handleAddComment(content: string) {
     const tempId = `temp-${Date.now()}`;
-    const tempPost: Post = {
-      id: tempId,
-      title: "Sending...",
-      content,
-      isOptimistic: true,
-      tempId
-    };
-
+    
     try {
-      // Add optimistic post immediately
-      startTransition(() => {
-        addOptimisticPost(tempPost);
-      });
+      // Create optimistic post
+      const optimisticPost: Post = {
+        id: tempId,
+        title: "Sending...",
+        content,
+        isOptimistic: true,
+        tempId
+      };
+
+      // Add optimistic post to base state immediately (this is what persists)
+      setPosts(prev => [...prev, optimisticPost]);
 
       // Send to server
       const serverPost = await addComment(content);
       
-      // Create the real post without optimistic flags
-      const realPost: Post = {
-        ...serverPost,
-        isOptimistic: false
-      };
-      
-      // Replace optimistic with real post in both states
+      // Create real post and update base state (replacing the optimistic one)
       setPosts(prev => prev.map(p => 
-        p.tempId === tempId ? realPost : p
+        p.tempId === tempId 
+          ? { ...serverPost, isOptimistic: false } // Replace with real server data
+          : p
       ));
 
       addToast("Comment added successfully!", "success");
     } catch (error) {
-      // Remove optimistic post on error from both states
-      setPosts(prev => prev.filter(p => p.tempId !== tempId));
+      // Remove optimistic post on error from base state
+      setPosts(prev => prev.filter(p => !p.tempId || !p.content.includes(content)));
       console.error("Failed to add comment:", error);
       addToast("Failed to add comment. Please try again.", "error");
     }
