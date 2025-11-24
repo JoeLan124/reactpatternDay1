@@ -117,7 +117,7 @@ const PostList = ({ posts }: { posts: Post[] }) => {
                   <li key={comment.id} className="text-sm">
                     {comment.content}
                     {comment.status === "sending" && (
-                      <span className="text-blue-500 ml-2">
+                      <span className="text-orange-100 font-bold ml-2">
                         (Sending...)
                       </span>
                     )}
