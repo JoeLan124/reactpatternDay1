@@ -56,7 +56,7 @@ const PostList = ({ posts }: { posts: Post[] }) => {
       try {
         // Simulate random submission error
         if (Math.random() < 0.5) {
-          //throw new Error("Failed to submit comment");
+          throw new Error("Failed to submit comment");
         }
 
         // Simulate server response
