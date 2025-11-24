@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
 import type { Post, Comment } from "../page"
+import toast from "react-hot-toast"
 
 // Mock data for comments - same structure as API
 const mockComments: Record<string, Comment[]> = {
@@ -53,6 +54,11 @@ const PostList = ({ posts }: { posts: Post[] }) => {
     // Simulate server submission with delay
     setTimeout(() => {
       try {
+        // Simulate random submission error
+        if (Math.random() < 0.5) {
+          //throw new Error("Failed to submit comment");
+        }
+
         // Simulate server response
         const newComment: Comment = {
           id: Date.now().toString(),
@@ -71,11 +77,15 @@ const PostList = ({ posts }: { posts: Post[] }) => {
         setComments(prev => [newComment, ...prev])
         // Remove optimistic comment
         setOptimisticComments(prev => prev.filter(comment => comment.id !== optimisticComment.id))
+        
+        // Show success toast
+        toast.success("Comment submitted successfully!")
       } catch (error) {
         console.error('Error submitting comment:', error)
         // Remove optimistic comment on error
         setOptimisticComments(prev => prev.filter(comment => comment.id !== optimisticComment.id))
-        alert('Failed to submit comment. Please try again.')
+        // Show error toast
+        toast.error("Failed to submit comment. Please try again.")
       }
     }, 2500) // Increased to 2500ms as requested
   }

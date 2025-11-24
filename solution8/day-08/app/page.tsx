@@ -29,6 +29,7 @@ const LandingPage = () => {
     // Simulate fetching posts with delay
     const fetchPosts = async () => {
       await new Promise(resolve => setTimeout(resolve, 100));
+      
       setPosts(mockPosts);
     };
     
