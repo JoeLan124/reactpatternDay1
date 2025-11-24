@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useState } from "react"
-import Input from "./components/InputForm"
 import PostList from "./components/PostList"
 
 export type Post = {
@@ -9,46 +8,35 @@ export type Post = {
   content: string;
 };
 
+export type Comment = {
+  id: string;
+  content: string;
+  createdAt: string;
+  postId: string;
+  status?: 'sending' | 'sent';
+};
+
+// Mock posts data
+const mockPosts: Post[] = [
+  { id: "1", title: "Welcome Post", content: "This is the first post!" },
+  { id: "2", title: "Second Post", content: "This is another post." }
+];
 
 const LandingPage = () => {
-  const [comments, setComments] = useState<string[]>([])
-  const [posts, setPosts] = useState<Post[]>([]); // Add posts state
+  const [posts, setPosts] = useState<Post[]>([]);
 
-  async function getPosts(): Promise<Post[]> {
-    const res = await fetch(
-      "http://localhost:3001/posts/",
-      {
-        cache: "no-store",
-      }
-    );
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch posts");
-    }
-
-    return res.json();
-  }
-
-  useEffect( () => {
-   const fetchPosts = async () => {
-      try {
-        const data = await getPosts();
-        setPosts(data);
-      } catch (error) {
-        console.error("Failed to fetch posts:", error);
-      }
+  useEffect(() => {
+    // Simulate fetching posts with delay
+    const fetchPosts = async () => {
+      await new Promise(resolve => setTimeout(resolve, 100));
+      setPosts(mockPosts);
     };
     
     fetchPosts();
-  },[]) 
+  }, [])
 
- 
-
-  
   return (
     <div>
-      <Input setComments={setComments} posts={ posts}  />
-      {comments}
       <PostList posts={posts} />
     </div>
   )
