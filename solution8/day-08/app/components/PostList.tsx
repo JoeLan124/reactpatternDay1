@@ -98,38 +98,51 @@ const PostList = ({ posts }: { posts: Post[] }) => {
   return (
     <main>
       {posts.map((post) => (
-        <article key={post.id} className="mb-6 p-4 border rounded">
-          <h2 className="text-xl font-bold">{post.title}</h2>
+        <article
+          key={post.id}
+          className="mb-6 p-4 border rounded shadow-md shadow-orange-100">
+          <h2 className="text-xl font-bold">
+            {post.title}
+          </h2>
           <p className="text-gray-600">{post.content}</p>
-          
+
           {/* Comments section */}
           <div className="mt-4">
-            <h3 className="text-lg font-semibold">Comments</h3>
+            <h3 className="text-lg font-semibold">
+              Comments
+            </h3>
             <ul className="list-disc list-inside">
-              {getCommentsForPost(post.id).map((comment) => (
-                <li key={comment.id} className="text-sm">
-                  {comment.content}
-                  {comment.status === 'sending' && (
-                    <span className="text-blue-500 ml-2">(Sending...)</span>
-                  )}
-                </li>
-              ))}
+              {getCommentsForPost(post.id).map(
+                (comment) => (
+                  <li key={comment.id} className="text-sm">
+                    {comment.content}
+                    {comment.status === "sending" && (
+                      <span className="text-blue-500 ml-2">
+                        (Sending...)
+                      </span>
+                    )}
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
           {/* Comment form */}
-          <form 
-            className="mt-4" 
+          <form
+            className="mt-4"
             onSubmit={(e) => {
-              e.preventDefault()
-              const formData = new FormData(e.currentTarget)
-              const content = formData.get('comment') as string
+              e.preventDefault();
+              const formData = new FormData(
+                e.currentTarget
+              );
+              const content = formData.get(
+                "comment"
+              ) as string;
               if (content.trim()) {
-                addComment(post.id, content)
-                e.currentTarget.reset()
+                addComment(post.id, content);
+                e.currentTarget.reset();
               }
-            }}
-          >
+            }}>
             <div className="flex gap-2">
               <input
                 type="text"
@@ -138,10 +151,9 @@ const PostList = ({ posts }: { posts: Post[] }) => {
                 className="flex-1 p-2 border rounded"
                 required
               />
-              <button 
-                type="submit" 
-                className="bg-blue-500 text-white px-4 py-2 rounded"
-              >
+              <button
+                type="submit"
+                className="bg-orange-100 text-amber-800 px-4 py-2 rounded">
                 Comment
               </button>
             </div>
@@ -149,7 +161,7 @@ const PostList = ({ posts }: { posts: Post[] }) => {
         </article>
       ))}
     </main>
-  )
+  );
 }
 
 export default PostList
