@@ -47,7 +47,7 @@ const LandingPage = () => {
   
   return (
     <div>
-      <Input setComments={setComments}  />
+      <Input setComments={setComments} posts={ posts}  />
       {comments}
       <PostList posts={posts} />
     </div>

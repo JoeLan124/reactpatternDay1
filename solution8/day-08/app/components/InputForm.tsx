@@ -2,13 +2,16 @@
 import { useState, FormEvent } from "react"
 import CommentButton from "./CommentButton"
 
+import type { Post } from "../page"
 
 
 interface InputProps {
-  setComments: (inp: string[]) => void
+  setComments: (inp: string[]) => void;
+  posts: Post[]
+
 }
 
-const InputForm = ({ setComments }: InputProps) => {
+const InputForm = ({ setComments, posts }:InputProps) => {
   const [newInput, setNewInput] = useState("")
   const [comm, setCom] = useState<string[]>([])
   
