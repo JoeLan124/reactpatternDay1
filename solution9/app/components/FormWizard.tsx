@@ -17,12 +17,14 @@ return (
               type="number"
               min="0"
               max="5"
-              value={state[question.id] || 0} // Assuming state is { [questionId]: points }
+              value={state.points[question.id] || 0} // Assuming state is { [questionId]: points }
               onChange={(e) =>
                 dispatch({
                   type: "UPDATE_POINTS",
-                  questionId: question.id,
-                  points: Number(e.target.value),
+                  payload: {
+                    questionId: question.id,
+                    points: Number(e.target.value),
+                  },
                 })
               }
             />

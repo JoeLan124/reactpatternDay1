@@ -1,26 +1,31 @@
 import { useReducer } from "react";
 import { FormWizardContext } from "../context";
-import { defaultFormWizardReducer } from "../reducers/form-wizard-reducer";
+import {
+  defaultFormWizardReducer,
+  FormWizardState,
+  FormWizardAction,
+} from "../reducers/form-wizard-reducer";
 
 interface FormWizardProviderProps {
-  reducer?: (state: any, action: any) => any; // Optional, with default provided
+  reducer?: (state: FormWizardState, action: FormWizardAction) => FormWizardState; // Optional, with default provided
   children: React.ReactNode;
 }
 
 export function FormWizardProvider({
   reducer = defaultFormWizardReducer,
-  children
-}: FormWizardProviderProps) { 
-    const [state, dispatch] = useReducer(reducer, {
-      values: { name: "", emai: "" },
-      errors: {},
-    });
+  children,
+}: FormWizardProviderProps) {
+  const [state, dispatch] = useReducer(reducer, {
+    values: { name: "", email: "" },
+    errors: {},
+    points: {},
+  });
 
-    const value = { state, dispatch }
-    
-    return (
-      <FormWizardContext.Provider
-            value={value}>{ children}</FormWizardContext.Provider>
-    );
+  const value = { state, dispatch };
+
+  return (
+    <FormWizardContext.Provider
+      value={value}>{ children}</FormWizardContext.Provider>
+  );
 
 }
