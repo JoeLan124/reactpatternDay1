@@ -1,3 +1,5 @@
+"use client";
+
 import { questions } from "../data/questions"; // Adjust path if needed
 import { useFormWizardContext } from "../hooks/useFormWizardContext";
 
