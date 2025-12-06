@@ -4,6 +4,7 @@ export interface FormWizardState {
   values: Record<string, string | number>; // Object for form values (e.g., { email: 'user@example.com' })
   errors: Record<string, string>; // Object for validation errors (e.g., { email: 'Invalid email' })
   points: Record<string, number>; // Object for question points (e.g., { q1: 5 })
+  currentTopicIndex: number;
 }
 
 export type FormWizardAction =
@@ -20,6 +21,10 @@ export type FormWizardAction =
         questionId: string;
         points: number;
       };
+    }
+  | {
+      type: "SET_CURRENT_TOPIC";
+      payload: { index: number };
     };
 
 const defaultFormWizardReducer = (
@@ -27,21 +32,7 @@ const defaultFormWizardReducer = (
   action: FormWizardAction
 ): FormWizardState => {
   switch (action.type) {
-    case "CHANGE_FIELD": {
-      const { name, value } = action.payload;
-      const errors = { ...state.errors };
-
-      if (name === "email" && typeof value === "string" && !value.includes("@")) {
-        errors.mail = "Invalid email address";
-      } else {
-        delete errors[name];
-      }
-      return {
-        ...state,
-        values: { ...state.values, [name]: value },
-        errors,
-      };
-    }
+    
     case "UPDATE_POINTS": {
       const { questionId, points } = action.payload;
       return {
@@ -49,6 +40,14 @@ const defaultFormWizardReducer = (
         points: { ...state.points, [questionId]: points },
       };
     }
+    
+  case "SET_CURRENT_TOPIC": {
+  const { index } = action.payload;
+  return {
+    ...state,
+    currentTopicIndex: index,
+  };
+}
     default:
       return state;
   }

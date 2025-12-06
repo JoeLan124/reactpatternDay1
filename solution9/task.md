@@ -11,4 +11,4 @@ The wizard should have multiple steps (next, prev, reset).
 
 ## Integrate with a Provider Context
 
-Create a Progress Bar that multiple components can aceess.
+Create a Progress Bar that multiple components can access.
