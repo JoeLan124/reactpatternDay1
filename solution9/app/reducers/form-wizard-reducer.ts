@@ -1,4 +1,5 @@
-import { type } from "os";
+import { questions } from "../data/questions";
+
 
 export interface FormWizardState {
   values: Record<string, string | number>; // Object for form values (e.g., { email: 'user@example.com' })
@@ -41,13 +42,37 @@ const defaultFormWizardReducer = (
       };
     }
     
-  case "SET_CURRENT_TOPIC": {
-  const { index } = action.payload;
+    case "SET_CURRENT_TOPIC": {
+      const { index } = action.payload;
+  
+      // Allow going back to previous topics without validation
+      if (index <= state.currentTopicIndex) {
+        return {
+          ...state,
+          currentTopicIndex: index,
+        };
+      }
+
+      // Validate that all questions in the current topic are answered (> 0 points)
+      const currentTopic = questions[state.currentTopicIndex];
+      const allQuestionsAnswered = currentTopic.questions.every(
+        (question) => state.points[question.id] > 0
+      );
+  
+      if (!allQuestionsAnswered) {
+        // Do not update the index if validation fails
+        return state;
+
+      }
+
   return {
     ...state,
     currentTopicIndex: index,
   };
-}
+
+
+    }
+      
     default:
       return state;
   }

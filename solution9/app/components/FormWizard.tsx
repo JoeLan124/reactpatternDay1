@@ -7,6 +7,11 @@ const FormWizard = () => {
   const { state, dispatch } = useFormWizardContext();
   const currentTopic = questions[state.currentTopicIndex];
 
+    const isCurrentTopicComplete =
+      currentTopic.questions.every(
+        (question) => state.points[question.id] > 0
+      );
+
   return (
     <div>
       {currentTopic && (
@@ -35,28 +40,48 @@ const FormWizard = () => {
         </div>
       )}
       {/* Add navigation buttons */}
-      <button
-        onClick={() =>
-          dispatch({
-            type: "SET_CURRENT_TOPIC",
-            payload: { index: state.currentTopicIndex - 1 },
-          })
-        }
-        disabled={state.currentTopicIndex === 0}>
-        Previous
-      </button>
-      <button
-        onClick={() =>
-          dispatch({
-            type: "SET_CURRENT_TOPIC",
-            payload: { index: state.currentTopicIndex + 1 },
-          })
-        }
-        disabled={
-          state.currentTopicIndex === questions.length - 1
-        }>
-        Next
-      </button>
+      <div className="flex gap-4">
+        <button
+          className="bg-blue-400 rounded-2xl p-2 m-2 w-24"
+          onClick={() =>
+            dispatch({
+              type: "SET_CURRENT_TOPIC",
+              payload: {
+                index: state.currentTopicIndex - 1,
+              },
+            })
+          }
+          disabled={state.currentTopicIndex === 0}>
+          Previous
+        </button>
+        <button
+          className={`${
+            !isCurrentTopicComplete
+              ? "bg-gray-300"
+              : state.currentTopicIndex ===
+                  questions.length - 1 &&
+                isCurrentTopicComplete
+              ? "bg-green-400"
+              : "bg-blue-400"
+          } rounded-2xl p-2 m-2 w-24`}
+          onClick={() =>
+            dispatch({
+              type: "SET_CURRENT_TOPIC",
+              payload: {
+                index: state.currentTopicIndex + 1,
+              },
+            })
+          }
+          disabled={
+            state.currentTopicIndex ===
+              questions.length - 1 ||
+            !isCurrentTopicComplete
+          }>
+          {state.currentTopicIndex <= questions.length - 2
+            ? "Next"
+            : "End"}
+        </button>
+      </div>
     </div>
   );
 };
