@@ -2,42 +2,48 @@
 
 import { questions } from "../data/questions"; // Adjust path if needed
 import { useFormWizardContext } from "../hooks/useFormWizardContext";
-import ProgressBar from "../components/ProgressBar"
+import ProgressBar from "../components/ProgressBar";
 
 const FormWizard = () => {
   const { state, dispatch } = useFormWizardContext();
   const currentTopic = questions[state.currentTopicIndex];
 
-    const isCurrentTopicComplete =
-      currentTopic.questions.every(
-        (question) => state.points[question.id] > 0
-      );
+  const isCurrentTopicComplete =
+    currentTopic.questions.every(
+      (question) => state.points[question.id] > 0
+    );
 
   return (
     <div>
       {currentTopic && (
         <div key={currentTopic.id}>
-          <h2>{currentTopic.topic}</h2>
-          {currentTopic.questions.map((question) => (
-            <div key={question.id}>
-              <p>{question.question}</p>
-              <input
-                type="number"
-                min="0"
-                max="5"
-                value={state.points[question.id] || 0}
-                onChange={(e) =>
-                  dispatch({
-                    type: "UPDATE_POINTS",
-                    payload: {
-                      questionId: question.id,
-                      points: Number(e.target.value),
-                    },
-                  })
-                }
-              />
-            </div>
-          ))}
+          <h2 className="flex font-extrabold bg-blue-500 justify-center mb-4">
+            {currentTopic.topic}
+          </h2>
+          <div>
+            {currentTopic.questions.map((question) => (
+              <div
+                key={question.id}
+                className="flex justify-between gap-6">
+                <p>{question.question}</p>
+                <input
+                  type="number"
+                  min="0"
+                  max="5"
+                  value={state.points[question.id] || 0}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "UPDATE_POINTS",
+                      payload: {
+                        questionId: question.id,
+                        points: Number(e.target.value),
+                      },
+                    })
+                  }
+                />
+              </div>
+            ))}
+          </div>
         </div>
       )}
       {/* Add navigation buttons */}
@@ -101,14 +107,14 @@ const FormWizard = () => {
             className="bg-blue-200 text-blue-500  rounded-2xl p-2 m-2 w-24"
             onClick={() =>
               dispatch({
-                type: "RESET_ALL"
+                type: "RESET_ALL",
               })
             }>
             Reset All
           </button>
         </div>
       </div>
-      <ProgressBar/>
+      <ProgressBar />
     </div>
   );
 };
