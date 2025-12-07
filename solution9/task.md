@@ -4,7 +4,7 @@
 
 The wizard should have multiple steps (next, prev, reset). OK
 
-- Internal reducer manages state transitions.
+- Internal reducer manages state transitions. OK
 - Allow parent component to provide a custom reducer that, for example:
   - Prevents skipping incomplete steps. OK
   - Auto-saves data on next. OK
