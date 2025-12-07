@@ -18,7 +18,6 @@ export function FormWizardProvider({
   children,
 }: FormWizardProviderProps) {
  const [state, dispatch] = useReducer(reducer, {
-   values: { name: "", email: "" },
    errors: {},
    points: {},
    currentTopicIndex: 0, // Start with first topic
