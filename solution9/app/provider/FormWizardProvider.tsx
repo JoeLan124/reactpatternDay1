@@ -26,8 +26,8 @@ export function FormWizardProvider({
   const value = { state, dispatch };
 
   return (
-    <FormWizardContext.Provider
-      value={value}>{ children}</FormWizardContext.Provider>
+      <FormWizardContext.Provider
+        value={value}>{ children}</FormWizardContext.Provider>
   );
 
 }

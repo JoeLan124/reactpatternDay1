@@ -2,6 +2,7 @@
 
 import { questions } from "../data/questions"; // Adjust path if needed
 import { useFormWizardContext } from "../hooks/useFormWizardContext";
+import ProgressBar from "../components/ProgressBar"
 
 const FormWizard = () => {
   const { state, dispatch } = useFormWizardContext();
@@ -107,6 +108,7 @@ const FormWizard = () => {
           </button>
         </div>
       </div>
+      <ProgressBar/>
     </div>
   );
 };
