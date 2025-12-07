@@ -2,12 +2,12 @@
 
 ## Build a “Form Wizard” Component using the State Reducer Pattern
 
-The wizard should have multiple steps (next, prev, reset).
+The wizard should have multiple steps (next, prev, reset). OK
 
 - Internal reducer manages state transitions.
 - Allow parent component to provide a custom reducer that, for example:
-  - Prevents skipping incomplete steps.
-  - Auto-saves data on next.
+  - Prevents skipping incomplete steps. OK
+  - Auto-saves data on next. OK
 
 ## Integrate with a Provider Context
 

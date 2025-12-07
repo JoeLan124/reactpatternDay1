@@ -40,47 +40,72 @@ const FormWizard = () => {
         </div>
       )}
       {/* Add navigation buttons */}
-      <div className="flex gap-4">
-        <button
-          className="bg-blue-400 rounded-2xl p-2 m-2 w-24"
-          onClick={() =>
-            dispatch({
-              type: "SET_CURRENT_TOPIC",
-              payload: {
-                index: state.currentTopicIndex - 1,
-              },
-            })
-          }
-          disabled={state.currentTopicIndex === 0}>
-          Previous
-        </button>
-        <button
-          className={`${
-            !isCurrentTopicComplete
-              ? "bg-gray-300"
-              : state.currentTopicIndex ===
-                  questions.length - 1 &&
-                isCurrentTopicComplete
-              ? "bg-green-400"
-              : "bg-blue-400"
-          } rounded-2xl p-2 m-2 w-24`}
-          onClick={() =>
-            dispatch({
-              type: "SET_CURRENT_TOPIC",
-              payload: {
-                index: state.currentTopicIndex + 1,
-              },
-            })
-          }
-          disabled={
-            state.currentTopicIndex ===
-              questions.length - 1 ||
-            !isCurrentTopicComplete
-          }>
-          {state.currentTopicIndex <= questions.length - 2
-            ? "Next"
-            : "End"}
-        </button>
+      <div className="flex flex-col gap-4">
+        <div className="flex">
+          <button
+            className="bg-blue-400 rounded-2xl p-2 m-2 w-24"
+            onClick={() =>
+              dispatch({
+                type: "SET_CURRENT_TOPIC",
+                payload: {
+                  index: state.currentTopicIndex - 1,
+                },
+              })
+            }
+            disabled={state.currentTopicIndex === 0}>
+            Previous
+          </button>
+          <button
+            className={`${
+              !isCurrentTopicComplete
+                ? "bg-gray-300"
+                : state.currentTopicIndex ===
+                    questions.length - 1 &&
+                  isCurrentTopicComplete
+                ? "bg-green-400"
+                : "bg-blue-400"
+            } rounded-2xl p-2 m-2 w-24`}
+            onClick={() =>
+              dispatch({
+                type: "SET_CURRENT_TOPIC",
+                payload: {
+                  index: state.currentTopicIndex + 1,
+                },
+              })
+            }
+            disabled={
+              state.currentTopicIndex ===
+                questions.length - 1 ||
+              !isCurrentTopicComplete
+            }>
+            {state.currentTopicIndex <= questions.length - 2
+              ? "Next"
+              : "End"}
+          </button>
+        </div>
+        <div className="flex">
+          <button
+            className="bg-blue-200 text-blue-500 rounded-2xl p-2 m-2 w-24"
+            onClick={() =>
+              dispatch({
+                type: "RESET_PAGE",
+                payload: {
+                  index: state.currentTopicIndex,
+                },
+              })
+            }>
+            Reset
+          </button>
+          <button
+            className="bg-blue-200 text-blue-500  rounded-2xl p-2 m-2 w-24"
+            onClick={() =>
+              dispatch({
+                type: "RESET_ALL"
+              })
+            }>
+            Reset All
+          </button>
+        </div>
       </div>
     </div>
   );

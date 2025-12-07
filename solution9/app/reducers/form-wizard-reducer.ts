@@ -26,6 +26,13 @@ export type FormWizardAction =
   | {
       type: "SET_CURRENT_TOPIC";
       payload: { index: number };
+    }
+  | {
+      type: "RESET_ALL";
+    }
+  | {
+      type: "RESET_PAGE";
+      payload: { index: number };
     };
 
 const defaultFormWizardReducer = (
@@ -40,6 +47,16 @@ const defaultFormWizardReducer = (
         ...state,
         points: { ...state.points, [questionId]: points },
       };
+    }
+      
+    case "RESET_ALL": {
+      
+      return {
+        values: { name: "", email: "" },
+        errors: {},
+        points: {},
+        currentTopicIndex: 0, // Start with first topic
+      }
     }
     
     case "SET_CURRENT_TOPIC": {
@@ -62,7 +79,6 @@ const defaultFormWizardReducer = (
       if (!allQuestionsAnswered) {
         // Do not update the index if validation fails
         return state;
-
       }
 
   return {
