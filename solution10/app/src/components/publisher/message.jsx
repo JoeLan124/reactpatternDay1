@@ -1,31 +1,32 @@
 "use client"
+import { useState } from "react";
 import { eventBus } from "../../../lib/eventBus";
 
-const message = [
-  { id: crypto.randomUUID(), text: "confidential" },
-  { id: crypto.randomUUID(), text: "internal" },
-  { id: crypto.randomUUID(), text: "public" },
-  { id: crypto.randomUUID(), text: "very confidential" },
-  { id: crypto.randomUUID(), text: "secret" },
-];
+export default function MessagePublisher() {
+  const [text, setText] = useState("");
 
-export default function AddToCartButton() {
   const handleClick = () => {
-    const randomIndex = Math.floor(
-      Math.random() * message.length
-    );
-    const selectedMessage = message[randomIndex];
+    if (!text.trim()) return;
+
     eventBus.publish("message:add", {
-      id: selectedMessage.id,
-      text: selectedMessage.text,
+      id: crypto.randomUUID(),
+      text: text,
     });
+    setText("");
   };
 
   return (
-    <div className="flex space-x-2 border rounded border-gray-600 p-2 m-3">
+    <div className="flex space-x-2 border rounded border-gray-600 p-2 m-3 items-center">
       <h2 className="text-2xl">Publisher</h2>
+      <input
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        className="border border-gray-400 rounded p-1 text-black"
+        placeholder="Enter message"
+      />
       <button
-        className="bg-emerald-500 rounded p-1 cursor-pointer"
+        className="bg-emerald-500 rounded p-1 cursor-pointer px-3"
         onClick={handleClick}>
         Send Message
       </button>
