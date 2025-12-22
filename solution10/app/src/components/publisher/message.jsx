@@ -1,5 +1,5 @@
 "use client"
-import { eventBus } from "../../lib/eventBus";
+import { eventBus } from "../../../lib/eventBus";
 
 const message = [
   { id: crypto.randomUUID(), text: "confidential" },
@@ -27,7 +27,7 @@ export default function AddToCartButton() {
       <button
         className="bg-emerald-500 rounded p-1 cursor-pointer"
         onClick={handleClick}>
-        Add to Cart
+        Send Message
       </button>
     </div>
   );
