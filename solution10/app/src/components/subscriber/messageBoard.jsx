@@ -1,14 +1,24 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useEvent } from "../../../hooks/useEvent";
 
 export default function MeesageBoard() {
-  const [messages, setMessage] = useState([]);
+  const [messages, setMessage] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem("notifications");
+      return stored ? JSON.parse(stored) : [];
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("notifications", JSON.stringify(messages));
+  }, [messages]);
 
   useEvent("message:add", (data) => {
     console.log(data);
-    setMessage([...messages, data]);
+    setMessage((prev) => [...prev, data]);
   });
 
   return (
