@@ -4,7 +4,7 @@ localStorage# Day 10 - Your Task
 
 - eventBus.js, useEvent.js -> OK
 - Publisher: buttons to emit notifications -> OK
-- Subscriber: Notification panel -> OK, here MessageBoard
-- Add categories like success, error, warning
+- Subscriber: Notification panel -> OK, see MessageBoard
+- Add categories like success, error, warning -> OK
 - Add dismiss / auto-hide
 - Store notifications in localStorage

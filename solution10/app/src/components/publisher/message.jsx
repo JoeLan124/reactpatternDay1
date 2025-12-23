@@ -24,7 +24,7 @@ export default function MessagePublisher() {
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        className="border border-gray-400 rounded p-1 text-black"
+        className="border border-gray-400 rounded p-1 text-white"
         placeholder="Enter message"
       />
       <select

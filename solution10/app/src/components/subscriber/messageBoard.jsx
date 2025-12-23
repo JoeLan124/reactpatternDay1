@@ -18,8 +18,15 @@ export default function MeesageBoard() {
       <ul className="list-none">
         {messages.map((message, index) => (
           <li key={index}>
-            {message.text}
-            {message.category}
+            <div className="flex justify-center items-center gap-4">
+
+                {message.text} 
+            
+            <div className={`${message.category === "success" ? "text-green-500" : message.category === "error" ? "text-red-500" : "text-yellow-500"}` }> 
+                {message.category}
+            </div>
+            </div>
+            
           </li>
         ))}
       </ul>
