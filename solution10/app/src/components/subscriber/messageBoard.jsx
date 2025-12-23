@@ -19,7 +19,15 @@ export default function MeesageBoard() {
   useEvent("message:add", (data) => {
     console.log(data);
     setMessage((prev) => [...prev, data]);
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
+      setMessage((prev) => prev.filter(m => m.id !== data.id));
+    }, 5000);
   });
+
+  const dismissMessage = (id) => {
+    setMessage((prev) => prev.filter(m => m.id !== id));
+  };
 
   return (
     <div className="flex flex-col text-center">
@@ -35,6 +43,12 @@ export default function MeesageBoard() {
             <div className={`${message.category === "success" ? "text-green-500" : message.category === "error" ? "text-red-500" : "text-yellow-500"}` }> 
                 {message.category}
             </div>
+            <button 
+              onClick={() => dismissMessage(message.id)}
+              className="bg-red-500 text-white rounded px-2 py-1 ml-2"
+            >
+              X
+            </button>
             </div>
             
           </li>
