@@ -25,7 +25,7 @@ export default function MeesageBoard() {
     <div className="flex flex-col text-center">
       <h2 className="text-2xl">Subscriber</h2>
     
-      <ul className="list-none">
+      <ul className="list-none" suppressHydrationWarning>
         {messages.map((message, index) => (
           <li key={index}>
             <div className="flex justify-center items-center gap-4">
