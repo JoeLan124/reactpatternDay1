@@ -17,7 +17,10 @@ export default function MeesageBoard() {
     
       <ul className="list-none">
         {messages.map((message, index) => (
-          <li key={index}>{message.text}</li>
+          <li key={index}>
+            {message.text}
+            {message.category}
+          </li>
         ))}
       </ul>
     </div>
