@@ -7,4 +7,4 @@ localStorage# Day 10 - Your Task
 - Subscriber: Notification panel -> OK, see MessageBoard
 - Add categories like success, error, warning -> OK
 - Add dismiss / auto-hide
-- Store notifications in localStorage
+- Store notifications in localStorage -> OK, see MessageBoard
