@@ -1,6 +1,6 @@
 # Day 11 - Your Task
 
-## Fix Broken Memoization
+## A: Fix Broken Memoization
 
 Take a look into this code:
 
@@ -28,7 +28,15 @@ Task:
 - Explain why it was re-rendering before.
 - Fix it using useCallback.
 
-## Improve a Derived State Anti-Pattern
+
+Answer to Task A: 
+1 + 3) see RenderingOne.tsx
+2) Explain
+The child rerenders before, because the onClick prop is a new function on every render and React.memo only shallowly compares the props.
+React.memo() uses === (strict equality) to compare props, so two different function objects are never equal even if they do the same thing
+
+
+## B: Improve a Derived State Anti-Pattern
 
 Code:
 
@@ -42,7 +50,13 @@ useEffect(() => {
 
 Task: Replace it with the correct derived-state pattern.
 
-## Build a Small Dashboard
+Answer to Task B: 
+const derivedState = items.filter(i => i.active);
+or when more expensive:
+const derivedState = useMemo(() => items.filter(i => i.active), [items]);
+
+
+## C: Build a Small Dashboard
 
 Build a small dashboard with a mini version of real-world React app (e-commerce, dashboards, admin panels).
 
