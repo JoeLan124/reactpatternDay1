@@ -1,3 +1,4 @@
+"use client"
 import { useState, useEffect, memo, useMemo } from "react";
 import { useDebounce } from "../debouncing/hooks/useDebounce";
 import { useThrottle } from "../throttling/hooks/useThrottle";
@@ -19,7 +20,7 @@ const DUMMY_USERS = [
 // Memoized UserItem component for performance optimization
 const UserItem = memo(({ user }) => {
   return (
-    <div className="border rounded p-3 mb-2 bg-white hover:bg-gray-50 transition-colors">
+    <div className="border rounded p-3 mb-2 text-black bg-white hover:bg-gray-50 transition-colors">
       <div className="font-semibold">{user.name}</div>
       <div className="text-sm text-gray-600">{user.email}</div>
       <div className="text-xs text-gray-500 mt-1">
@@ -66,7 +67,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gray-100 p-6 text-black">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-6 text-gray-800">
           Performance Dashboard
