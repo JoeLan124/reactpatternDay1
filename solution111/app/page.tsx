@@ -1,10 +1,9 @@
-
-import RenderingOnce from "./components/RenderingOnce";
+import Dashboard from "./performance/dashboard/Dashboard";
 
 export default function Home() {
   return (
     <div>
-     <RenderingOnce/>
+      <Dashboard/>
     </div>
   );
 }
