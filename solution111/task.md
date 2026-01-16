@@ -64,3 +64,7 @@ Build a small dashboard with a mini version of real-world React app (e-commerce,
 - A scroll tracker with throttle
 - Render a user list(10K) filtered by search(No derived state and with performance optimizations)
 - Scroll position updates smoothly
+
+Answer to Task C: 
+see performance/dashboard/Dashboard.jsx
+
