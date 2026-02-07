@@ -24,6 +24,11 @@ Answer:
 see components/ProductCard.tsx
 the new react compiler handles these cases by default, so we can remove the memoization.
 
+Use Memorization when one of these following items are true:
+
+- The function is computationally expensive.
+- The code you pass it to expects the exact same reference later.
+- You pass objects/functions to something that skips work based on ===.
 
 
 
