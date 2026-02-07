@@ -22,6 +22,8 @@ export default function App() {
 }
 ```
 
+
+
 Task:
 
 - Make sure `<Child>` renders only once even after repeatedly clicking Increment.
@@ -29,11 +31,9 @@ Task:
 - Fix it using useCallback.
 
 
-Answer to Task A: 
-1 + 3) see RenderingOne.tsx
-2) Explain
-The child rerenders before, because the onClick prop is a new function on every render and React.memo only shallowly compares the props.
-React.memo() uses === (strict equality) to compare props, so two different function objects are never equal even if they do the same thing
+1) Answer: see components/BrokenMemoization/page.tsx
+2) Explain: memo doesnt work with higher order functions, because it compares the function reference and not the function itself. So I use  useCallback to memoize the function reference.
+
 
 
 ## B: Improve a Derived State Anti-Pattern
@@ -66,5 +66,5 @@ Build a small dashboard with a mini version of real-world React app (e-commerce,
 - Scroll position updates smoothly
 
 Answer to Task C: 
-see performance/dashboard/Dashboard.jsx
+see performance/dashboard/Dashboard.jsx in solution 111
 
