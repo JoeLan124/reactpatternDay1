@@ -43,11 +43,18 @@ Build a form with fields like:
 Assignment:
 
 - Move the CountrySelector into a separate lazy-loaded component.
-- Show a custom loader (e.g., spinner).
+- Show a custom loader (e.g., spinner). 
 - Measure initial bundle size vs lazy bundle size.
 
-
-
+Answer: 
+1) See Form and components/CountrySelector/page.tsx
+2) Only in Form: When button is loading, disable all inputs and the button itself.
+   <button type="submit" disabled={isLoading}>
+          {isLoading
+            ? "Spinner - Wird gespeichert..."
+            : "Speichern"}
+        </button>
+3) Chrome dev tools size: 0.8 (lazy) vs 1.0 (before) - i am not sure if this is correct.
 
 ## Split a large context
 
