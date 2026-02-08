@@ -46,6 +46,9 @@ Assignment:
 - Show a custom loader (e.g., spinner).
 - Measure initial bundle size vs lazy bundle size.
 
+
+
+
 ## Split a large context
 
 You have a context:
