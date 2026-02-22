@@ -79,3 +79,6 @@ Assignment:
   - CartContext
 - Update providers and consumers.
 - Show improved render patterns with logs.
+
+Answer:
+I understand, but i use AI to help me with the code.

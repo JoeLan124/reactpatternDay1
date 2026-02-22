@@ -1,11 +1,11 @@
 import Card, { CardHeader, CardBody, CardFooter } from "./Card"
 
-Card.Header = CardHeader;
-Card.Body = CardBody;
-Card.Footer = CardFooter;
+// Card.Header = CardHeader;
+// Card.Body = CardBody;
+// Card.Footer = CardFooter;
 
-console.log('Card.Header:', Card.Header);
-console.log('Card:', Card);
+// console.log('Card.Header:', Card.Header);
+// console.log('Card:', Card);
 
 export default function CardDemo ()  {
   return (

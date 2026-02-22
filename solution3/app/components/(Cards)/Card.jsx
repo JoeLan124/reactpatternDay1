@@ -12,8 +12,6 @@ let Card = ({ children, close }) => {
 
 const CardHeader = ({ title, children, className}) => {
 
-
-
     return (
       <div className={`mb-4 border-1 border-gray-100 rounded-3xl p-4 shadow-2xl ${className}`} >
         <div className="flex justify-between">
@@ -25,7 +23,6 @@ const CardHeader = ({ title, children, className}) => {
     </div>
   );
 }
-
 
 
 const CardBody = ({ children }) =>{
@@ -50,8 +47,8 @@ Card.Footer = CardFooter;
 // Attach subcomponents
 export default Card
 
-export { CardHeader, CardBody, CardFooter }
+//export { CardHeader, CardBody, CardFooter }
 
-console.log('Card.Header:', Card.Header);
-console.log('Card.Body:', Card.Body);
-console.log('Card.Footer:', Card.Footer);
+// console.log('Card.Header:', Card.Header);
+// console.log('Card.Body:', Card.Body);
+// console.log('Card.Footer:', Card.Footer);
