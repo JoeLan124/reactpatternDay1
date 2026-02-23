@@ -69,6 +69,7 @@ const Toolbar = ({ start, center, end }) => {
           </div>
         </div>
       )}
+
     </div>
   );
 };

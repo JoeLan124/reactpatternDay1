@@ -1,14 +1,20 @@
 import Toolbar from "./components/Toolbar";
+//import Toolbar2 from "./components/Toolbar2";
 
 export default function Home() {
   return (
+    // <Toolbar2
+    //   start={<p>Left</p>}
+    //   center={<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>}
+    //   end={<p>User</p>}
+    // />
     <div className="min-h-screen bg-gray-100 p-4">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">
         Responsive Toolbar Demo
       </h1>
-      
+
       <p className="text-gray-600 mb-6">
-        Resize your browser to see the responsive behavior. On smaller screens, 
+        Resize your browser to see the responsive behavior. On smaller screens,
         the center content collapses into an overflow menu.
       </p>
 
