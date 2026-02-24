@@ -1,13 +1,30 @@
 //import Toolbar from "./components/Toolbar";
 import Toolbar2 from "./components/Toolbar2";
+import { Camera } from "lucide-react";
+import Toast from "./components/Toast";
 
 export default function Home() {
+  console.log("Rendering Home (Server Component)");
+
+  const showText = async () => {
+    "use server"
+    console.log("Hello");
+  }
   return (
-    <Toolbar2
-      start={<p>Left</p>}
-      center={<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>}
-      end={<p>User</p>}
-    />
+    <div>
+      <Toolbar2
+        start={<p>Left</p>}
+        center={
+          <p>
+            Lorem ipsum dolor sit amet consectetur
+            adipisicing elit.
+          </p>
+        }
+        end={<p>User</p>}
+      />
+
+      <Toast icon={<Camera />} message="Camera" action={showText}/>
+    </div>
     // <div className="min-h-screen bg-gray-100 p-4">
     //   <h1 className="text-2xl font-bold text-gray-800 mb-4">
     //     Responsive Toolbar Demo
