@@ -6,28 +6,32 @@ const Toolbar2 = ({ start, center, end }) => {
     const [isOverflowOpen, setIsOverflowOpen] = useState(false);
 
     return (
-      <div className="flex justify-between bg-gray-500 w-full h-24 p-4">
-        <div>{start}</div>
-        <div className="hidden md:flex bg-amber-200/50  h-8 text-black px-4  items-center justify-center">
+      <div className="flex justify-between items-center bg-slate-800 w-full h-16 px-4 relative">
+        <div className="flex items-center">{start}</div>
+        <div className="hidden md:flex bg-slate-700/80 rounded-lg h-10 text-white px-4 items-center justify-center gap-2">
           {center}
         </div>
-        <div className="md:hidden flex flex-col-2 h-18 items-end w-full">
-          {isOverflowOpen && (
-            <div className="flex bg-amber-200/50 h-8 text-black px-4  items-center justify-center">
-              {center}
-            </div>
-          )}
-        </div>
-        <div className="absolute right-24">{end}</div>
-        <div>
+        <div className="hidden md:flex items-center">{end}</div>
+        
+        {/* Mobile overflow menu */}
+        <div className="md:hidden flex items-center gap-2">
+          <div>{end}</div>
           <button
-            className="md:hidden"
-            onClick={() =>
-              setIsOverflowOpen(!isOverflowOpen)
-            }>
-            button
+            className="p-2 text-white hover:bg-slate-700 rounded-lg transition-colors"
+            onClick={() => setIsOverflowOpen(!isOverflowOpen)}
+          >
+            {isOverflowOpen ? "✕" : "☰"}
           </button>
         </div>
+        
+        {/* Mobile dropdown */}
+        {isOverflowOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-slate-800 border-t border-slate-700 p-4 flex flex-col gap-2">
+            <div className="flex flex-col gap-2 text-white">
+              {center}
+            </div>
+          </div>
+        )}
       </div>
     );
 };
